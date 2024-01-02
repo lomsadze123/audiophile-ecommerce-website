@@ -5,6 +5,7 @@ import axios from "axios";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/home/Home";
 import Footer from "./components/footer/Footer";
+import Category from "./pages/category/Category";
 
 const App = () => {
   const [data, setData] = useState<Product>();
@@ -26,6 +27,7 @@ const App = () => {
       <Intro />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/category/:id" element={<Category />} />
       </Routes>
       <Footer />
     </div>

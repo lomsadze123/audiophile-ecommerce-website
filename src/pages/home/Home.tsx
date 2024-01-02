@@ -6,13 +6,13 @@ import ZX9Speaker from "../../components/homeProducts/ZX9Speaker";
 
 const Home = () => {
   return (
-    <div className="mt-8 mx-6">
+    <main className="mt-8 mx-6 md:mt-20 max-w-[1110px] lg:mx-auto">
       <Items />
       <ZX9Speaker />
       <ZX7speaker />
       <Earphones />
       <AudioGear />
-    </div>
+    </main>
   );
 };
 

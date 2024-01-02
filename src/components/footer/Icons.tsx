@@ -6,7 +6,7 @@ const Icons = () => {
   const list = [facebook, twitter, instagram];
 
   return (
-    <div className="flex items-center gap-4 justify-center py-12">
+    <div className="flex items-center gap-4 justify-center py-12 md:p-0 cursor-pointer">
       {list.map((items) => (
         <img key={items} src={items} alt="social network icons" />
       ))}

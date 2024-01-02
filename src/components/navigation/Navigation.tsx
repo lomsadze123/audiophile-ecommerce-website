@@ -4,7 +4,7 @@ import list from "../../objects/NavList";
 const Navigation = () => {
   return (
     <nav>
-      <ul className="flex flex-col gap-4 tracking-[2px] text-[13px]">
+      <ul className="flex flex-col gap-4 tracking-[2px] text-[13px] md:flex-row md:gap-[34px]">
         {list.map((items) => (
           <li key={items}>
             <Link to="">{items}</Link>

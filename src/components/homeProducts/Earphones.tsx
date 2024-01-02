@@ -5,17 +5,17 @@ import Button from "../button/Button";
 
 const Earphones = () => {
   return (
-    <div className="flex flex-col gap-6 mb-[96px] md:flex-row">
-      <picture className="grow-[-1]">
-        <source media="(min-width: 980px)" srcSet={earphonesDesktop} />
+    <div className="flex flex-col gap-6 md:flex-row">
+      <picture>
+        <source media="(min-width: 1024px)" srcSet={earphonesDesktop} />
         <source media="(min-width: 768px)" srcSet={earphonesTablet} />
         <img
-          className="rounded-[8px] mx-auto md:max-w-[350px]"
+          className="rounded-[8px] mx-auto md:max-w-[370px] lg:max-w-[480px]"
           src={earphonesMobile}
           alt="image-speaker-zx9"
         />
       </picture>
-      <div className="bg-almostGrey py-[41px] pl-6 rounded-[8px] grow">
+      <div className="bg-almostGrey py-[41px] pl-6 rounded-[8px] grow md:pt-[101px] md:pl-[41px] lg:pl-[95px]">
         <h2 className="text-[28px] tracking-[2px] mb-8">YX1 EARPHONES</h2>
         <Button bgColor="" border="border-mediumBlack" />
       </div>

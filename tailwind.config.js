@@ -15,6 +15,8 @@ export default {
       },
       backgroundImage: {
         mobileHomeHeader: "url('assets/home/mobile/image-header.jpg')",
+        tabletHomeHeader: "url('assets/home/tablet/image-header.jpg')",
+        desktopHomeHeader: "url('assets/home/desktop/image-hero.jpg')",
         mobileZX7: "url('assets/home/mobile/image-speaker-zx7.jpg')",
         tabletZX7: "url('assets/home/tablet/image-speaker-zx7.jpg')",
         desktopZX7: "url('assets/home/desktop/image-speaker-zx7.jpg')",
