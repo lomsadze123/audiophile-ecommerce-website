@@ -4,18 +4,14 @@ import cart from "../../icons/icon-cart.svg";
 import useBgChange from "../../hooks/useBgChange";
 import useWidth from "../../hooks/useWidth";
 import Navigation from "../navigation/Navigation";
-import useScrollLock from "../../hooks/useScrollLock ";
+import useScrollLock from "../../hooks/useScrollLock";
+import { ItemTypes } from "../../types/Types";
 
-const Header = ({
-  hide,
-  setHide,
-}: {
-  hide: boolean;
-  setHide: React.Dispatch<React.SetStateAction<boolean>>;
-}) => {
+const Header = ({ hide, setHide, lockScroll, setLockScroll }: ItemTypes) => {
   const opacity = useBgChange();
   const width = useWidth();
-  const toggleScrollLock = useScrollLock();
+
+  lockScroll !== undefined && useScrollLock(lockScroll);
 
   return (
     <header
@@ -28,15 +24,15 @@ const Header = ({
       {width < 1024 && (
         <img
           onClick={() => {
-            toggleScrollLock();
-            setHide(!hide);
+            setLockScroll && setLockScroll(!lockScroll);
+            setHide && setHide(!hide);
           }}
           src={menu}
           alt="burger menu icon"
         />
       )}
       <img
-        className="md:mr-auto pl-[42px] lg:m-0 lg:p-0"
+        className="md:mr-auto md:pl-[42px] lg:m-0 lg:p-0"
         src={logo}
         alt="audiophile logo"
       />

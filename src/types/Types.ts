@@ -31,4 +31,11 @@ interface Product {
   }[];
 }
 
+export interface ItemTypes {
+  hide?: boolean;
+  setHide?: React.Dispatch<React.SetStateAction<boolean>>;
+  lockScroll?: boolean;
+  setLockScroll?: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
 export default Product;

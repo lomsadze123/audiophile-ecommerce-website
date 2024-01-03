@@ -7,7 +7,11 @@ const Navigation = () => {
       <ul className="flex flex-col gap-4 tracking-[2px] text-[13px] md:flex-row md:gap-[34px]">
         {list.map((items) => (
           <li key={items}>
-            <Link to="">{items}</Link>
+            <Link
+              to={items === "HOME" ? "/" : `/category/${items.toLowerCase()}`}
+            >
+              {items}
+            </Link>
           </li>
         ))}
       </ul>

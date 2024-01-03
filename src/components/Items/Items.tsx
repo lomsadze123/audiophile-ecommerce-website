@@ -1,8 +1,9 @@
 import arrow from "../../icons/icon-arrow-right.svg";
 import { Link } from "react-router-dom";
 import list from "../../objects/ItemsObj";
+import { ItemTypes } from "../../types/Types";
 
-const Items = ({ hide }: { hide?: boolean }) => {
+const Items = ({ hide, setHide, setLockScroll }: ItemTypes) => {
   return (
     <section
       className={`flex flex-col gap-4 items-center md:flex-row md:justify-center z-[-2] md:gap-[85px] lg:gap-[215px] bg-white ${
@@ -20,6 +21,10 @@ const Items = ({ hide }: { hide?: boolean }) => {
             {item.title}
           </h2>
           <Link
+            onClick={() => {
+              setHide && setHide(false);
+              setLockScroll && setLockScroll((prev) => !prev);
+            }}
             to={`/category/${item.title.toLowerCase()}`}
             className="flex items-center gap-[13.32px] text-[#00000080] text-[13px]"
           >

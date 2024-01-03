@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Button from "../button/Button";
 
 const Description = () => {
@@ -14,7 +15,9 @@ const Description = () => {
         Experience natural, lifelike audio and exceptional build quality made
         for the passionate music enthusiast.
       </p>
-      <Button bgColor="bg-skinColorBold" border="border-none" />
+      <Link to="/detail/headphones" state={4}>
+        <Button bgColor="bg-skinColorBold" border="border-none" />
+      </Link>
     </div>
   );
 };
