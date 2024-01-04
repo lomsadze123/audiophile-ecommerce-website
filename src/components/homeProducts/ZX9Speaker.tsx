@@ -2,6 +2,7 @@ import ZX9mobile from "../../assets/home/mobile/image-speaker-zx9.png";
 import ZX9tablet from "../../assets/home/tablet/image-speaker-zx9.png";
 import ZX9desktop from "../../assets/home/desktop/image-speaker-zx9.png";
 import Button from "../button/Button";
+import { Link } from "react-router-dom";
 // import earphones from "../../assets/home/mobile/image-earphones-yx1.jpg"
 
 const ZX9Speaker = () => {
@@ -28,7 +29,9 @@ const ZX9Speaker = () => {
           Upgrade to premium speakers that are phenomenally built to deliver
           truly remarkable sound.
         </p>
-        <Button bgColor="bg-mediumBlack" border="border-none" />
+        <Link to="/detail/speakers" state={6}>
+          <Button bgColor="bg-mediumBlack" border="border-none" />
+        </Link>
       </div>
     </div>
   );
