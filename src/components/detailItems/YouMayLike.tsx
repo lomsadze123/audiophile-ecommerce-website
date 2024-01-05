@@ -4,15 +4,17 @@ import {
   MobileShared,
   TabletShared,
 } from "../../objects/CategoryImage";
-import Product from "../../types/Types";
+import Product, { CountType } from "../../types/Types";
 import Button from "../button/Button";
 
 const YouMayLike = ({
   data,
   findProduct,
+  setCount,
 }: {
   findProduct: Product | undefined;
   data: Product[] | null;
+  setCount: React.Dispatch<React.SetStateAction<CountType[]>>;
 }) => {
   const slugToIdMap = data?.reduce((acc: Record<string, number>, item) => {
     acc[item.slug] = item.id;
@@ -62,7 +64,11 @@ const YouMayLike = ({
               to={"/detail/headphones"}
               state={slugToIdMap?.[product.slug]}
             >
-              <Button bgColor="bg-skinColorBold" border="border-none" />
+              <Button
+                setCount={setCount}
+                bgColor="bg-skinColorBold"
+                border="border-none"
+              />
             </Link>
           </div>
         ))}

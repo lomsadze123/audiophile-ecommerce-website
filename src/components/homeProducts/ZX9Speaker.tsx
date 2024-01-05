@@ -3,9 +3,14 @@ import ZX9tablet from "../../assets/home/tablet/image-speaker-zx9.png";
 import ZX9desktop from "../../assets/home/desktop/image-speaker-zx9.png";
 import Button from "../button/Button";
 import { Link } from "react-router-dom";
+import { CountType } from "../../types/Types";
 // import earphones from "../../assets/home/mobile/image-earphones-yx1.jpg"
 
-const ZX9Speaker = () => {
+const ZX9Speaker = ({
+  setCount,
+}: {
+  setCount: React.Dispatch<React.SetStateAction<CountType[]>>;
+}) => {
   return (
     <div
       className="bg-skinColorBold text-center flex flex-col items-center rounded-[8px] py-[55px] lg:pb-0 lg:pt-[99px] lg:items-start gap-9 text-white mb-6 lg:flex-row lg:justify-between lg:pl-[122px] lg:text-left
@@ -30,7 +35,11 @@ const ZX9Speaker = () => {
           truly remarkable sound.
         </p>
         <Link to="/detail/speakers" state={6}>
-          <Button bgColor="bg-mediumBlack" border="border-none" />
+          <Button
+            setCount={setCount}
+            bgColor="bg-mediumBlack"
+            border="border-none"
+          />
         </Link>
       </div>
     </div>

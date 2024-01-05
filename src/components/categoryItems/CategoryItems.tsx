@@ -1,4 +1,4 @@
-import Product from "../../types/Types";
+import Product, { CountType } from "../../types/Types";
 import Button from "../button/Button";
 import {
   earphoneList,
@@ -7,7 +7,13 @@ import {
 } from "../../objects/CategoryImage";
 import { Link, useLocation } from "react-router-dom";
 
-const CategoryItems = ({ data }: { data: Product[] | null }) => {
+const CategoryItems = ({
+  data,
+  setCount,
+}: {
+  data: Product[] | null;
+  setCount: React.Dispatch<React.SetStateAction<CountType[]>>;
+}) => {
   const location = useLocation();
   const path = location.pathname.split("/")[2];
 
@@ -54,7 +60,11 @@ const CategoryItems = ({ data }: { data: Product[] | null }) => {
                   {product.description}
                 </p>
                 <Link to={`/detail/${product.category}`} state={product.id}>
-                  <Button bgColor="bg-skinColorBold" border="border-none" />
+                  <Button
+                    setCount={setCount}
+                    bgColor="bg-skinColorBold"
+                    border="border-none"
+                  />
                 </Link>
               </div>
             </section>

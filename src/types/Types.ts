@@ -36,6 +36,24 @@ export interface ItemTypes {
   setHide?: React.Dispatch<React.SetStateAction<boolean>>;
   lockScroll?: boolean;
   setLockScroll?: React.Dispatch<React.SetStateAction<boolean>>;
+  productData?: DetailTypes[];
+}
+
+export interface Addition extends ItemTypes {
+  count: CountType[];
+  setCount: React.Dispatch<React.SetStateAction<CountType[]>>;
+}
+
+export interface DetailTypes {
+  title: string;
+  price: number;
+  quantity: number;
+  productName: string;
+}
+
+export interface CountType {
+  id: number;
+  count: number;
 }
 
 export default Product;

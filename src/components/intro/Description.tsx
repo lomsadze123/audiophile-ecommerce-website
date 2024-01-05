@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom";
 import Button from "../button/Button";
+import { CountType } from "../../types/Types";
 
-const Description = () => {
+const Description = ({
+  setCount,
+}: {
+  setCount: React.Dispatch<React.SetStateAction<CountType[]>>;
+}) => {
   return (
     <div className="pb-[108px] md:pb-[200px] pt-[158px] text-center text-white lg:text-left lg:pl-[165px] lg:pt-[198px]">
       <p className="text-sm font-normal tracking-[10px] opacity-[0.4964] mb-4">
@@ -16,7 +21,11 @@ const Description = () => {
         for the passionate music enthusiast.
       </p>
       <Link to="/detail/headphones" state={4}>
-        <Button bgColor="bg-skinColorBold" border="border-none" />
+        <Button
+          setCount={setCount}
+          bgColor="bg-skinColorBold"
+          border="border-none"
+        />
       </Link>
     </div>
   );

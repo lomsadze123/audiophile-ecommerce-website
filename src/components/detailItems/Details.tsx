@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import Product from "../../types/Types";
+import Product, { CountType, DetailTypes } from "../../types/Types";
 import {
   MobileImages,
   desktopImages,
@@ -7,8 +7,23 @@ import {
 } from "../../objects/DetailsImage";
 import DetailPictures from "./DetailPictures";
 import YouMayLike from "./YouMayLike";
+import CountButton from "../button/CountButton";
+import { useState } from "react";
 
-const Details = ({ data }: { data: Product[] | null }) => {
+const Details = ({
+  data,
+  setProductData,
+  productData,
+  count,
+  setCount,
+}: {
+  data: Product[] | null;
+  productData: DetailTypes[];
+  setProductData: React.Dispatch<React.SetStateAction<DetailTypes[]>>;
+  count: CountType[];
+  setCount: React.Dispatch<React.SetStateAction<CountType[]>>;
+}) => {
+  const [quantity, setQuantity] = useState(1);
   const location = useLocation();
   const path = location.pathname.split("/")[2];
 
@@ -16,6 +31,8 @@ const Details = ({ data }: { data: Product[] | null }) => {
 
   const productName =
     findProduct?.name.split(" ").slice(0, -1).join("").toLowerCase() || "";
+
+  console.log(quantity);
 
   return (
     <section className="mb-[120px]">
@@ -50,13 +67,48 @@ const Details = ({ data }: { data: Product[] | null }) => {
           <h3 className="text-lg tracking-[1.286px] text-mediumBlack">
             $ {findProduct?.price}
           </h3>
-          <div className="flex gap-4 mt-[31px]">
-            <div className="text-mediumBlack bg-almostGrey flex gap-7 items-center px-6">
-              <button className="opacity-25 p-1">-</button>
-              <span>1</span>
-              <button className="opacity-25 p-1">+</button>
-            </div>
-            <button className="text-[13px] tracking-[1px] uppercase bg-skinColorBold border-[1px] py-[15px] px-[30.5px]">
+          <div
+            onClick={(e) =>
+              setQuantity(
+                Number(e.currentTarget.children[0].children[1].textContent)
+              )
+            }
+            className="flex gap-4 mt-[31px]"
+          >
+            <CountButton count={count} setCount={setCount} />
+            <button
+              onClick={() => {
+                const existingProductIndex = productData.findIndex(
+                  (p) =>
+                    p.title ===
+                    findProduct?.name.split(" ").slice(0, -1).join(" ")
+                );
+
+                if (existingProductIndex !== -1) {
+                  setProductData((prevData) => {
+                    const updatedData = [...prevData];
+                    updatedData[existingProductIndex] = {
+                      ...updatedData[existingProductIndex],
+                      quantity:
+                        (count.find((p) => p.id === location.state)?.count ||
+                          1) + updatedData[existingProductIndex].quantity,
+                    };
+                    return updatedData;
+                  });
+                } else if (findProduct) {
+                  setProductData((prevData) => [
+                    ...prevData,
+                    {
+                      title: findProduct.name.split(" ").slice(0, -1).join(" "),
+                      price: findProduct?.price,
+                      quantity: quantity,
+                      productName: productName,
+                    },
+                  ]);
+                }
+              }}
+              className="text-[13px] tracking-[1px] uppercase bg-skinColorBold border-[1px] py-[15px] px-[30.5px]"
+            >
               ADD TO CART
             </button>
           </div>
@@ -90,14 +142,10 @@ const Details = ({ data }: { data: Product[] | null }) => {
         <DetailPictures productName={productName} />
       </div>
       <div>
-        <YouMayLike findProduct={findProduct} data={data} />
+        <YouMayLike setCount={setCount} findProduct={findProduct} data={data} />
       </div>
     </section>
   );
 };
 
 export default Details;
-
-{
-  /* <Button bgColor="bg-skinColorBold" border="border-none" /> */
-}

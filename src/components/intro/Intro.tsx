@@ -4,8 +4,17 @@ import Description from "./Description";
 import Items from "../Items/Items";
 import useWidth from "../../hooks/useWidth";
 import { Link, useLocation } from "react-router-dom";
+import { CountType, DetailTypes } from "../../types/Types";
 
-const Intro = () => {
+const Intro = ({
+  productData,
+  count,
+  setCount,
+}: {
+  productData: DetailTypes[];
+  count: CountType[];
+  setCount: React.Dispatch<React.SetStateAction<CountType[]>>;
+}) => {
   const [hide, setHide] = useState(false);
   const width = useWidth();
   const [lockScroll, setLockScroll] = useState(false);
@@ -27,6 +36,9 @@ const Intro = () => {
         setHide={setHide}
         lockScroll={lockScroll}
         setLockScroll={setLockScroll}
+        productData={productData}
+        count={count}
+        setCount={setCount}
       />
       {hide && width < 1024 && (
         <div className="fixed bottom-0 left-0 top-16 md:top-20 right-0 z-10 bg-black bg-opacity-50 overflow-auto">
@@ -38,7 +50,7 @@ const Intro = () => {
           {title}
         </h2>
       )}
-      {location.pathname === "/" && <Description />}
+      {location.pathname === "/" && <Description setCount={setCount} />}
       {location.pathname.startsWith("/detail") && (
         <Link
           className="text-mediumBlack opacity-50 translate-y-10 mx-6 pt-[45px] md:pt-[61px] text-[15px] block"

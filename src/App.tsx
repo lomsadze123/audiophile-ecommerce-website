@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Intro from "./components/intro/Intro";
-import Product from "./types/Types";
+import Product, { CountType, DetailTypes } from "./types/Types";
 import axios from "axios";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "./pages/home/Home";
@@ -11,6 +11,8 @@ import Form from "./pages/form/Form";
 
 const App = () => {
   const [data, setData] = useState<Product[] | null>(null);
+  const [productData, setProductData] = useState<DetailTypes[]>([]);
+  const [count, setCount] = useState<CountType[]>([{ id: 0, count: 1 }]);
   const location = useLocation();
 
   useEffect(() => {
@@ -35,11 +37,25 @@ const App = () => {
 
   return (
     <div>
-      <Intro />
+      <Intro productData={productData} count={count} setCount={setCount} />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/category/:id" element={<Category data={data} />} />
-        <Route path="/detail/:id" element={<Detail data={data} />} />
+        <Route path="/" element={<Home setCount={setCount} />} />
+        <Route
+          path="/category/:id"
+          element={<Category setCount={setCount} data={data} />}
+        />
+        <Route
+          path="/detail/:id"
+          element={
+            <Detail
+              count={count}
+              setCount={setCount}
+              data={data}
+              setProductData={setProductData}
+              productData={productData}
+            />
+          }
+        />
         <Route path="/form" element={<Form />} />
       </Routes>
       <Footer />

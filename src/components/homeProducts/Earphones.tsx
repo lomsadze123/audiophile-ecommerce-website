@@ -3,8 +3,13 @@ import earphonesTablet from "../../assets/home/tablet/image-earphones-yx1.jpg";
 import earphonesDesktop from "../../assets/home/desktop/image-earphones-yx1.jpg";
 import Button from "../button/Button";
 import { Link } from "react-router-dom";
+import { CountType } from "../../types/Types";
 
-const Earphones = () => {
+const Earphones = ({
+  setCount,
+}: {
+  setCount: React.Dispatch<React.SetStateAction<CountType[]>>;
+}) => {
   return (
     <div className="flex flex-col gap-6 md:flex-row">
       <picture>
@@ -19,7 +24,7 @@ const Earphones = () => {
       <div className="bg-almostGrey py-[41px] pl-6 rounded-[8px] grow md:pt-[101px] md:pl-[41px] lg:pl-[95px]">
         <h2 className="text-[28px] tracking-[2px] mb-8">YX1 EARPHONES</h2>
         <Link to="/detail/earphones" state={1}>
-          <Button bgColor="" border="border-mediumBlack" />
+          <Button setCount={setCount} bgColor="" border="border-mediumBlack" />
         </Link>
       </div>
     </div>

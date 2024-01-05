@@ -25,6 +25,13 @@ import ZX7Mobile from "../assets/shared/mobile/image-zx7-speaker.jpg";
 import ZX7Tablet from "../assets/shared/tablet/image-zx7-speaker.jpg";
 import ZX7Desktop from "../assets/shared/desktop/image-zx7-speaker.jpg";
 
+import XX99IICart from "../assets/cart/image-xx99-mark-two-headphones.jpg";
+import XX99ICart from "../assets/cart/image-xx99-mark-one-headphones.jpg";
+import XX59Cart from "../assets/cart/image-xx59-headphones.jpg";
+import ZX7Cart from "../assets/cart/image-zx7-speaker.jpg";
+import ZX9Cart from "../assets/cart/image-zx9-speaker.jpg";
+import YX1Cart from "../assets/cart/image-yx1-earphones.jpg";
+
 export const MobileShared: { [key: string]: string } = {
   xx99marktwo: XX99IIMobile,
   xx99markone: XX99IMobile,
@@ -54,6 +61,15 @@ export const headphonesList = [
   XX99headphonesMarkI,
   XX99headphonesMarkII,
 ];
+
+export const cartImages: { [key: string]: string } = {
+  xx99markii: XX99IICart,
+  xx99marki: XX99ICart,
+  xx59: XX59Cart,
+  zx9: ZX9Cart,
+  zx7: ZX7Cart,
+  yx1wireless: YX1Cart,
+};
 
 export const speakerList = [ZX7Speaker, ZX9Speaker];
 
