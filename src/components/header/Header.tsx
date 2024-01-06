@@ -64,7 +64,11 @@ const Header = ({
       </div>
       {show && (
         <div className="bg-black h-screen bg-opacity-50 absolute px-6 pt-6 md:pt-12 mt-[65px] md:mt-24 top-0 bottom-0 left-0 right-0">
-          <Cart productData={productData} setProductData={setProductData} />
+          <Cart
+            setShow={setShow}
+            productData={productData}
+            setProductData={setProductData}
+          />
         </div>
       )}
     </header>

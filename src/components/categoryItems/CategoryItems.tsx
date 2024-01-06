@@ -6,6 +6,7 @@ import {
   speakerList,
 } from "../../objects/CategoryImage";
 import { Link, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const CategoryItems = ({
   data,
@@ -42,12 +43,20 @@ const CategoryItems = ({
               } lg:gap-0 lg:justify-between lg:items-center`}
               key={product.id}
             >
-              <img
+              <motion.img
+                initial={{ opacity: 0, x: -200 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
                 className="rounded-[8px] max-w-[327px] mx-auto md:max-w-[689px] lg:max-w-[540px] lg:mx-0"
                 src={selected[product.id - whichIndex]}
                 alt={`image-${product.name}`}
               />
-              <div className="text-center text-white lg:text-left">
+              <motion.div
+                initial={{ opacity: 0, x: 200 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.9, delay: 0.5 }}
+                className="text-center text-white lg:text-left"
+              >
                 {product.new && (
                   <p className="text-sm font-normal text-skinColorBold tracking-[10px] mb-4">
                     NEW PRODUCT
@@ -64,9 +73,10 @@ const CategoryItems = ({
                     setCount={setCount}
                     bgColor="bg-skinColorBold"
                     border="border-none"
+                    hover="lg:hover:bg-skinColor"
                   />
                 </Link>
-              </div>
+              </motion.div>
             </section>
           )
       )}

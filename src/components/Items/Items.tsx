@@ -2,10 +2,14 @@ import arrow from "../../icons/icon-arrow-right.svg";
 import { Link } from "react-router-dom";
 import list from "../../objects/ItemsObj";
 import { ItemTypes } from "../../types/Types";
+import { motion } from "framer-motion";
 
 const Items = ({ hide, setHide, setLockScroll }: ItemTypes) => {
   return (
-    <section
+    <motion.section
+      initial={{ opacity: 0, x: 200 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.8 }}
       className={`flex flex-col gap-4 items-center md:flex-row md:justify-center z-[-2] md:gap-[85px] lg:gap-[215px] bg-white ${
         hide ? "py-8 md:py-14" : "mb-[120px] lg:mb-[160px]"
       }`}
@@ -26,14 +30,14 @@ const Items = ({ hide, setHide, setLockScroll }: ItemTypes) => {
               setLockScroll && setLockScroll((prev) => !prev);
             }}
             to={`/category/${item.title.toLowerCase()}`}
-            className="flex items-center gap-[13.32px] text-[#00000080] text-[13px]"
+            className="flex items-center gap-[13.32px] text-[#00000080] text-[13px] lg:hover:text-skinColorBold"
           >
             SHOP
             <img className="opacity-100" src={arrow} alt="" />
           </Link>
         </div>
       ))}
-    </section>
+    </motion.section>
   );
 };
 

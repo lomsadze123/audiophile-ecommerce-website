@@ -11,7 +11,12 @@ const ZX7speaker = ({
       <div className="py-[101px] pl-6 md:pl-[62.25px]">
         <h2 className="text-[28px] tracking-[2px] mb-8">ZX7 SPEAKER</h2>
         <Link to="/detail/speakers" state={5}>
-          <Button setCount={setCount} bgColor="" border="border-mediumBlack" />
+          <Button
+            setCount={setCount}
+            bgColor=""
+            border="border-mediumBlack"
+            hover="lg:hover:bg-mediumBlack lg:hover:text-white"
+          />
         </Link>
       </div>
     </div>

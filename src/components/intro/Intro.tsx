@@ -5,6 +5,7 @@ import Items from "../Items/Items";
 import useWidth from "../../hooks/useWidth";
 import { Link, useLocation } from "react-router-dom";
 import { DetailTypes } from "../../types/Types";
+import { motion } from "framer-motion";
 
 const Intro = ({
   productData,
@@ -50,18 +51,29 @@ const Intro = ({
         </div>
       )}
       {location.pathname.startsWith("/category") && (
-        <h2 className="pt-24 pb-8 text-[28px] tracking-[2px] text-white text-center mb-16 md:text-[40px] md:pt-[165px] md:pb-[97px]">
+        <motion.h2
+          initial={{ opacity: 0, y: -200 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="pt-24 pb-8 text-[28px] tracking-[2px] text-white text-center mb-16 md:text-[40px] md:pt-[165px] md:pb-[97px]"
+        >
           {title}
-        </h2>
+        </motion.h2>
       )}
       {location.pathname === "/" && <Description setCount={setCount} />}
       {(location.pathname.startsWith("/detail") ||
         location.pathname === "/form") && (
         <Link
-          className="text-mediumBlack opacity-50 translate-y-10 mx-6 pt-[45px] md:pt-[74px] text-[15px] block"
+          className="text-mediumBlack opacity-50 translate-y-10 mx-6 pt-[45px] md:pt-[74px] text-[15px] block lg:hover:text-skinColorBold"
           to="/"
         >
-          Go Back
+          <motion.button
+            initial={{ opacity: 0, y: -200 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            Go Back
+          </motion.button>
         </Link>
       )}
     </div>

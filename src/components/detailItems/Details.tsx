@@ -8,6 +8,7 @@ import {
 import DetailPictures from "./DetailPictures";
 import YouMayLike from "./YouMayLike";
 import CountButton from "../button/CountButton";
+import { motion } from "framer-motion";
 
 const Details = ({
   data,
@@ -38,7 +39,11 @@ const Details = ({
   return (
     <section className="mb-[120px]">
       <div className="flex flex-col gap-8 lg:flex-row lg:gap-0 lg:justify-between lg:items-center mb-[88px] md:flex-row md:items-center md:gap-[69.5px]">
-        <picture>
+        <motion.picture
+          initial={{ opacity: 0, x: -200 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+        >
           <source
             media="(min-width: 1024px)"
             srcSet={desktopImages[productName]}
@@ -52,8 +57,13 @@ const Details = ({
             src={MobileImages[productName]}
             alt={productName}
           />
-        </picture>
-        <div className="text-white">
+        </motion.picture>
+        <motion.div
+          initial={{ opacity: 0, x: 200 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="text-white"
+        >
           {findProduct?.new && (
             <p className="text-sm font-normal text-skinColorBold tracking-[10px] mb-4">
               NEW PRODUCT
@@ -104,12 +114,12 @@ const Details = ({
                   ]);
                 }
               }}
-              className="text-[13px] tracking-[1px] uppercase bg-skinColorBold border-[1px] py-[15px] px-[30.5px]"
+              className="text-[13px] tracking-[1px] uppercase bg-skinColorBold border-[1px] py-[15px] px-[30.5px] lg:hover:bg-skinColor"
             >
               ADD TO CART
             </button>
           </div>
-        </div>
+        </motion.div>
       </div>
       <div className="text-mediumBlack flex flex-col gap-[88px] mb-[88px] lg:flex-row">
         <div>

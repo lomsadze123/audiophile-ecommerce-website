@@ -7,9 +7,13 @@ import { cartImages } from "../../objects/CategoryImage";
 const OnlyProduct = ({
   productData,
   setProductData,
+  bool,
+  howMany,
 }: {
   productData: DetailTypes[] | undefined;
   setProductData: React.Dispatch<React.SetStateAction<DetailTypes[]>>;
+  bool?: boolean;
+  howMany: number;
 }) => {
   const location = useLocation();
 
@@ -26,7 +30,7 @@ const OnlyProduct = ({
 
   return (
     <ul className="flex flex-col gap-6">
-      {productData?.map((product, index) => (
+      {productData?.slice(0, howMany)?.map((product, index) => (
         <Fragment key={product.productName}>
           <li className="flex items-center gap-4 justify-between">
             <div className="flex gap-4 items-center">
@@ -41,7 +45,7 @@ const OnlyProduct = ({
               </div>
             </div>
             <div>
-              {location.pathname === "/form" ? (
+              {location.pathname === "/form" && bool ? (
                 <p className="text-[15px] text-mediumBlack opacity-50">
                   x{product.quantity}
                 </p>

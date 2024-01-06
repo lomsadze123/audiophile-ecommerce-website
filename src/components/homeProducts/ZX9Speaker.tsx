@@ -37,6 +37,7 @@ const ZX9Speaker = ({
             setCount={setCount}
             bgColor="bg-mediumBlack"
             border="border-none"
+            hover="lg:hover:bg-[#4C4C4C]"
           />
         </Link>
       </div>

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Button from "../button/Button";
+import { motion } from "framer-motion";
 
 const Description = ({
   setCount,
@@ -7,7 +8,12 @@ const Description = ({
   setCount: React.Dispatch<React.SetStateAction<number>>;
 }) => {
   return (
-    <div className="pb-[108px] md:pb-[200px] pt-[158px] text-center text-white lg:text-left lg:pl-[165px] lg:pt-[198px]">
+    <motion.div
+      initial={{ opacity: 0, x: -200 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.8 }}
+      className="pb-[108px] md:pb-[200px] pt-[158px] text-center text-white lg:text-left lg:pl-[165px] lg:pt-[198px]"
+    >
       <p className="text-sm font-normal tracking-[10px] opacity-[0.4964] mb-4">
         NEW PRODUCT
       </p>
@@ -24,9 +30,10 @@ const Description = ({
           setCount={setCount}
           bgColor="bg-skinColorBold"
           border="border-none"
+          hover="lg:hover:bg-skinColor"
         />
       </Link>
-    </div>
+    </motion.div>
   );
 };
 

@@ -23,7 +23,12 @@ const Earphones = ({
       <div className="bg-almostGrey py-[41px] pl-6 rounded-[8px] grow md:pt-[101px] md:pl-[41px] lg:pl-[95px]">
         <h2 className="text-[28px] tracking-[2px] mb-8">YX1 EARPHONES</h2>
         <Link to="/detail/earphones" state={1}>
-          <Button setCount={setCount} bgColor="" border="border-mediumBlack" />
+          <Button
+            setCount={setCount}
+            bgColor=""
+            border="border-mediumBlack"
+            hover="lg:hover:bg-mediumBlack lg:hover:text-white"
+          />
         </Link>
       </div>
     </div>

@@ -68,6 +68,7 @@ const YouMayLike = ({
                 setCount={setCount}
                 bgColor="bg-skinColorBold"
                 border="border-none"
+                hover="lg:hover:bg-skinColor"
               />
             </Link>
           </div>
