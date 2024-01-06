@@ -1,14 +1,14 @@
 import Items from "../../components/Items/Items";
 import CategoryItems from "../../components/categoryItems/CategoryItems";
 import AudioGear from "../../components/homeProducts/AudioGear";
-import Product, { CountType } from "../../types/Types";
+import Product from "../../types/Types";
 
 const Category = ({
   data,
   setCount,
 }: {
   data: Product[] | null;
-  setCount: React.Dispatch<React.SetStateAction<CountType[]>>;
+  setCount: React.Dispatch<React.SetStateAction<number>>;
 }) => {
   return (
     <main className="mx-6 max-w-[1244px] lg:mx-auto">

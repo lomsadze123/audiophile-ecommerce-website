@@ -4,16 +4,20 @@ import Description from "./Description";
 import Items from "../Items/Items";
 import useWidth from "../../hooks/useWidth";
 import { Link, useLocation } from "react-router-dom";
-import { CountType, DetailTypes } from "../../types/Types";
+import { DetailTypes } from "../../types/Types";
 
 const Intro = ({
   productData,
-  count,
   setCount,
+  setQuantity,
+  setProductData,
 }: {
   productData: DetailTypes[];
-  count: CountType[];
-  setCount: React.Dispatch<React.SetStateAction<CountType[]>>;
+  count: number;
+  setCount: React.Dispatch<React.SetStateAction<number>>;
+  quantity: number;
+  setQuantity: React.Dispatch<React.SetStateAction<number>>;
+  setProductData: React.Dispatch<React.SetStateAction<DetailTypes[]>>;
 }) => {
   const [hide, setHide] = useState(false);
   const width = useWidth();
@@ -37,8 +41,8 @@ const Intro = ({
         lockScroll={lockScroll}
         setLockScroll={setLockScroll}
         productData={productData}
-        count={count}
-        setCount={setCount}
+        setQuantity={setQuantity}
+        setProductData={setProductData}
       />
       {hide && width < 1024 && (
         <div className="fixed bottom-0 left-0 top-16 md:top-20 right-0 z-10 bg-black bg-opacity-50 overflow-auto">
@@ -51,9 +55,10 @@ const Intro = ({
         </h2>
       )}
       {location.pathname === "/" && <Description setCount={setCount} />}
-      {location.pathname.startsWith("/detail") && (
+      {(location.pathname.startsWith("/detail") ||
+        location.pathname === "/form") && (
         <Link
-          className="text-mediumBlack opacity-50 translate-y-10 mx-6 pt-[45px] md:pt-[61px] text-[15px] block"
+          className="text-mediumBlack opacity-50 translate-y-10 mx-6 pt-[45px] md:pt-[74px] text-[15px] block"
           to="/"
         >
           Go Back

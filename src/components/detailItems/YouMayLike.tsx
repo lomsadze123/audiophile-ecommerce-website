@@ -4,7 +4,7 @@ import {
   MobileShared,
   TabletShared,
 } from "../../objects/CategoryImage";
-import Product, { CountType } from "../../types/Types";
+import Product from "../../types/Types";
 import Button from "../button/Button";
 
 const YouMayLike = ({
@@ -14,7 +14,7 @@ const YouMayLike = ({
 }: {
   findProduct: Product | undefined;
   data: Product[] | null;
-  setCount: React.Dispatch<React.SetStateAction<CountType[]>>;
+  setCount: React.Dispatch<React.SetStateAction<number>>;
 }) => {
   const slugToIdMap = data?.reduce((acc: Record<string, number>, item) => {
     acc[item.slug] = item.id;

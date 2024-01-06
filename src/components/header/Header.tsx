@@ -15,14 +15,17 @@ const Header = ({
   lockScroll,
   setLockScroll,
   productData,
-  count,
-  setCount,
+  setProductData,
 }: Addition) => {
   const opacity = useBgChange();
   const width = useWidth();
   const [show, setShow] = useState(false);
 
   lockScroll !== undefined && useScrollLock(lockScroll);
+
+  const productQuantity = productData?.reduce((acc, item) => {
+    return (acc += item.quantity);
+  }, 0);
 
   return (
     <header
@@ -48,15 +51,20 @@ const Header = ({
         alt="audiophile logo"
       />
       {width >= 1024 && <Navigation />}
-      <img
-        className="cursor-pointer"
-        onClick={() => setShow(!show)}
-        src={cart}
-        alt="cart logo"
-      />
+      <div className="relative">
+        <img
+          className="cursor-pointer"
+          onClick={() => setShow(!show)}
+          src={cart}
+          alt="cart logo"
+        />
+        <p className="absolute bottom-4 left-3 text-sm bg-skinColorBold rounded-full font-normal px-2">
+          {!!productQuantity && productQuantity > 0 && productQuantity}
+        </p>
+      </div>
       {show && (
-        <div className="bg-black h-screen bg-opacity-50 absolute px-6 pt-6 md:pt-12 mt-[65px] top-0 bottom-0 left-0 right-0">
-          <Cart count={count} setCount={setCount} productData={productData} />
+        <div className="bg-black h-screen bg-opacity-50 absolute px-6 pt-6 md:pt-12 mt-[65px] md:mt-24 top-0 bottom-0 left-0 right-0">
+          <Cart productData={productData} setProductData={setProductData} />
         </div>
       )}
     </header>

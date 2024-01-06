@@ -3,12 +3,11 @@ import earphonesTablet from "../../assets/home/tablet/image-earphones-yx1.jpg";
 import earphonesDesktop from "../../assets/home/desktop/image-earphones-yx1.jpg";
 import Button from "../button/Button";
 import { Link } from "react-router-dom";
-import { CountType } from "../../types/Types";
 
 const Earphones = ({
   setCount,
 }: {
-  setCount: React.Dispatch<React.SetStateAction<CountType[]>>;
+  setCount: React.Dispatch<React.SetStateAction<number>>;
 }) => {
   return (
     <div className="flex flex-col gap-6 md:flex-row">

@@ -1,4 +1,4 @@
-import Product, { CountType } from "../../types/Types";
+import Product from "../../types/Types";
 import Button from "../button/Button";
 import {
   earphoneList,
@@ -12,7 +12,7 @@ const CategoryItems = ({
   setCount,
 }: {
   data: Product[] | null;
-  setCount: React.Dispatch<React.SetStateAction<CountType[]>>;
+  setCount: React.Dispatch<React.SetStateAction<number>>;
 }) => {
   const location = useLocation();
   const path = location.pathname.split("/")[2];

@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import Product, { CountType, DetailTypes } from "../../types/Types";
+import Product, { DetailTypes } from "../../types/Types";
 import {
   MobileImages,
   desktopImages,
@@ -8,7 +8,6 @@ import {
 import DetailPictures from "./DetailPictures";
 import YouMayLike from "./YouMayLike";
 import CountButton from "../button/CountButton";
-import { useState } from "react";
 
 const Details = ({
   data,
@@ -16,14 +15,18 @@ const Details = ({
   productData,
   count,
   setCount,
+  quantity,
+  setQuantity,
 }: {
   data: Product[] | null;
   productData: DetailTypes[];
   setProductData: React.Dispatch<React.SetStateAction<DetailTypes[]>>;
-  count: CountType[];
-  setCount: React.Dispatch<React.SetStateAction<CountType[]>>;
+  count: number;
+  setCount: React.Dispatch<React.SetStateAction<number>>;
+  quantity: number;
+  setQuantity: React.Dispatch<React.SetStateAction<number>>;
 }) => {
-  const [quantity, setQuantity] = useState(1);
+  // const [quantity, setQuantity] = useState(1);
   const location = useLocation();
   const path = location.pathname.split("/")[2];
 
@@ -31,8 +34,6 @@ const Details = ({
 
   const productName =
     findProduct?.name.split(" ").slice(0, -1).join("").toLowerCase() || "";
-
-  console.log(quantity);
 
   return (
     <section className="mb-[120px]">
@@ -67,15 +68,13 @@ const Details = ({
           <h3 className="text-lg tracking-[1.286px] text-mediumBlack">
             $ {findProduct?.price}
           </h3>
-          <div
-            onClick={(e) =>
-              setQuantity(
-                Number(e.currentTarget.children[0].children[1].textContent)
-              )
-            }
-            className="flex gap-4 mt-[31px]"
-          >
-            <CountButton count={count} setCount={setCount} />
+          <div className="flex gap-4 mt-[31px]">
+            <CountButton
+              count={count}
+              setCount={setCount}
+              quantity={quantity}
+              setQuantity={setQuantity}
+            />
             <button
               onClick={() => {
                 const existingProductIndex = productData.findIndex(
@@ -89,9 +88,7 @@ const Details = ({
                     const updatedData = [...prevData];
                     updatedData[existingProductIndex] = {
                       ...updatedData[existingProductIndex],
-                      quantity:
-                        (count.find((p) => p.id === location.state)?.count ||
-                          1) + updatedData[existingProductIndex].quantity,
+                      quantity: quantity,
                     };
                     return updatedData;
                   });

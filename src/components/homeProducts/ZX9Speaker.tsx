@@ -3,13 +3,11 @@ import ZX9tablet from "../../assets/home/tablet/image-speaker-zx9.png";
 import ZX9desktop from "../../assets/home/desktop/image-speaker-zx9.png";
 import Button from "../button/Button";
 import { Link } from "react-router-dom";
-import { CountType } from "../../types/Types";
-// import earphones from "../../assets/home/mobile/image-earphones-yx1.jpg"
 
 const ZX9Speaker = ({
   setCount,
 }: {
-  setCount: React.Dispatch<React.SetStateAction<CountType[]>>;
+  setCount: React.Dispatch<React.SetStateAction<number>>;
 }) => {
   return (
     <div

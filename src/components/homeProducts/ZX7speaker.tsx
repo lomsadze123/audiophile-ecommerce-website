@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
 import Button from "../button/Button";
-import { CountType } from "../../types/Types";
 
 const ZX7speaker = ({
   setCount,
 }: {
-  setCount: React.Dispatch<React.SetStateAction<CountType[]>>;
+  setCount: React.Dispatch<React.SetStateAction<number>>;
 }) => {
   return (
     <div className="bg-mobileZX7 md:bg-tabletZX7 lg:bg-desktopZX7 bg-cover bg-no-repeat h-full mb-6 rounded-[8px] lg:mb-10">

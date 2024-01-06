@@ -40,8 +40,8 @@ export interface ItemTypes {
 }
 
 export interface Addition extends ItemTypes {
-  count: CountType[];
-  setCount: React.Dispatch<React.SetStateAction<CountType[]>>;
+  setQuantity: React.Dispatch<React.SetStateAction<number>>;
+  setProductData: React.Dispatch<React.SetStateAction<DetailTypes[]>>;
 }
 
 export interface DetailTypes {
@@ -49,11 +49,6 @@ export interface DetailTypes {
   price: number;
   quantity: number;
   productName: string;
-}
-
-export interface CountType {
-  id: number;
-  count: number;
 }
 
 export default Product;

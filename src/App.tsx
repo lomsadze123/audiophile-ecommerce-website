@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Intro from "./components/intro/Intro";
-import Product, { CountType, DetailTypes } from "./types/Types";
+import Product, { DetailTypes } from "./types/Types";
 import axios from "axios";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "./pages/home/Home";
@@ -12,7 +12,8 @@ import Form from "./pages/form/Form";
 const App = () => {
   const [data, setData] = useState<Product[] | null>(null);
   const [productData, setProductData] = useState<DetailTypes[]>([]);
-  const [count, setCount] = useState<CountType[]>([{ id: 0, count: 1 }]);
+  const [count, setCount] = useState(1);
+  const [quantity, setQuantity] = useState(1);
   const location = useLocation();
 
   useEffect(() => {
@@ -37,7 +38,14 @@ const App = () => {
 
   return (
     <div>
-      <Intro productData={productData} count={count} setCount={setCount} />
+      <Intro
+        productData={productData}
+        count={count}
+        setCount={setCount}
+        quantity={quantity}
+        setQuantity={setQuantity}
+        setProductData={setProductData}
+      />
       <Routes>
         <Route path="/" element={<Home setCount={setCount} />} />
         <Route
@@ -48,15 +56,22 @@ const App = () => {
           path="/detail/:id"
           element={
             <Detail
-              count={count}
-              setCount={setCount}
               data={data}
               setProductData={setProductData}
               productData={productData}
+              count={count}
+              setCount={setCount}
+              quantity={quantity}
+              setQuantity={setQuantity}
             />
           }
         />
-        <Route path="/form" element={<Form />} />
+        <Route
+          path="/form"
+          element={
+            <Form productData={productData} setProductData={setProductData} />
+          }
+        />
       </Routes>
       <Footer />
     </div>

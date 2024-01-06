@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
 import Button from "../button/Button";
-import { CountType } from "../../types/Types";
 
 const Description = ({
   setCount,
 }: {
-  setCount: React.Dispatch<React.SetStateAction<CountType[]>>;
+  setCount: React.Dispatch<React.SetStateAction<number>>;
 }) => {
   return (
     <div className="pb-[108px] md:pb-[200px] pt-[158px] text-center text-white lg:text-left lg:pl-[165px] lg:pt-[198px]">
