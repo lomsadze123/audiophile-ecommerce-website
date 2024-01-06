@@ -9,6 +9,7 @@ import { Addition } from "../../types/Types";
 import { useState } from "react";
 import Cart from "../cart/Cart";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Header = ({
   hide,
@@ -46,14 +47,16 @@ const Header = ({
           alt="burger menu icon"
         />
       )}
-      <motion.img
-        initial={{ opacity: 0, x: 200 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, delay: 0.3 }}
-        className="md:mr-auto md:pl-[42px] lg:m-0 lg:p-0"
-        src={logo}
-        alt="audiophile logo"
-      />
+      <Link to="/">
+        <motion.img
+          initial={{ opacity: 0, x: 200 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="md:mr-auto md:pl-[42px] lg:m-0 lg:p-0"
+          src={logo}
+          alt="audiophile logo"
+        />
+      </Link>
       {width >= 1024 && <Navigation />}
       <div className="relative">
         <img
