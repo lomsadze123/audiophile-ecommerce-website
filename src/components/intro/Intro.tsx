@@ -27,6 +27,10 @@ const Intro = ({
   const title =
     location.pathname.split("/")[2] &&
     location.pathname.split("/")[2].toUpperCase();
+  const check =
+    location.pathname !== "/" &&
+    !location.pathname.startsWith("/detail") &&
+    !location.pathname.startsWith("/category");
 
   return (
     <div
@@ -62,7 +66,8 @@ const Intro = ({
       )}
       {location.pathname === "/" && <Description setCount={setCount} />}
       {(location.pathname.startsWith("/detail") ||
-        location.pathname === "/form") && (
+        location.pathname === "/form" ||
+        check) && (
         <Link
           className="text-mediumBlack opacity-50 translate-y-10 mx-6 pt-[45px] md:pt-[74px] text-[15px] block lg:hover:text-skinColorBold"
           to="/"

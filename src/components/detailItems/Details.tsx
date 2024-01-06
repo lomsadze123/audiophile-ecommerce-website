@@ -27,7 +27,6 @@ const Details = ({
   quantity: number;
   setQuantity: React.Dispatch<React.SetStateAction<number>>;
 }) => {
-  // const [quantity, setQuantity] = useState(1);
   const location = useLocation();
   const path = location.pathname.split("/")[2];
 

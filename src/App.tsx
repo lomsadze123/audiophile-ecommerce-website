@@ -8,6 +8,7 @@ import Footer from "./components/footer/Footer";
 import Category from "./pages/category/Category";
 import Detail from "./pages/details/Detail";
 import Form from "./pages/form/Form";
+import NotFound from "./pages/notFound/NotFound";
 
 const App = () => {
   const [data, setData] = useState<Product[] | null>(null);
@@ -72,6 +73,7 @@ const App = () => {
             <Form productData={productData} setProductData={setProductData} />
           }
         />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </div>
