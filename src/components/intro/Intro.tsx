@@ -50,7 +50,7 @@ const Intro = ({
         setProductData={setProductData}
       />
       {hide && width < 1024 && (
-        <div className="fixed bottom-0 left-0 top-16 md:top-20 right-0 z-10 bg-black bg-opacity-50 overflow-auto">
+        <div className="fixed bottom-0 left-0 top-16 md:top-20 right-0 z-[15] bg-black bg-opacity-50 overflow-auto">
           <Items hide={hide} setHide={setHide} setLockScroll={setLockScroll} />
         </div>
       )}
